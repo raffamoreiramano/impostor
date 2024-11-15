@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --fundo: hsl(230, 90%, 60%);
+  --cor-1: hsl(0, 75%, 50%);
+  --cor-2: hsl(200, 100%, 50%);
+  --cor-3: hsl(50, 75%, 50%);
+  --cor-4: hsl(100, 75%, 50%);
+  --cor-5: hsl(300, 75%, 50%);
+  --cor-6: hsl(200, 75%, 95%);
+  --cor-7: hsl(200, 15%, 15%);
+
+  color: black;
+  text-shadow: 
+  .2rem 0 .05rem white,
+  -.2rem 0 .05rem white,
+  0 .2rem .05rem white,
+  0 -.2rem .05rem white,
+  .1rem .1rem .05rem white,
+  -.1rem -.1rem .05rem white,
+  .1rem -.1rem .05rem white,
+  -.1rem .1rem .05rem white,
+  0 .25rem .1rem hsl(from var(--fundo) h 100 25);
+  letter-spacing: .15em;
+}
+
+body, html {
+  min-height: 100%;
+  contain: content;
+  background: var(--fundo);
+  font-family: "Cherry Bomb One", "Comic Sans MS", "Comic Sans", system-ui;
+}
+
+button, input:is([type=text], [type=number], [type=password]) {
+  border: 0;
+  outline: none;
+  padding: 1.25rem 1.5em;
+  border-radius: 1.75rem;
+  font-family: "Cherry Bomb One", "Comic Sans MS", "Comic Sans", system-ui;
+  font-size: 1.5rem;
+
+  color: black;
+  text-shadow: 
+  .2rem 0 .05rem white,
+  -.2rem 0 .05rem white,
+  0 .2rem .05rem white,
+  0 -.2rem .05rem white,
+  .1rem .1rem .05rem white,
+  -.1rem -.1rem .05rem white,
+  .1rem -.1rem .05rem white,
+  -.1rem .1rem .05rem white,
+  0 .25rem .1rem hsl(from var(--fundo) h 100 25);
+  letter-spacing: .15em;
+  text-align: center;
+}
+
+input:is([type=text], [type=number], [type=password]) {
+  filter: drop-shadow(0 .2rem .2rem hsl(from var(--fundo) h 75 40));
+}
+
+button {
+  --cor: var(--cor-4);
+  background-color: hsl(from var(--cor) calc(h + 50) s 55);
+  box-shadow:
+    inset 0 .1rem .1rem 0 hsl(from var(--cor) h s calc(l + 15)),
+    0 .1rem .1rem 0 hsl(from var(--cor) h s l),
+    0 1rem 1rem -.5rem hsl(from var(--fundo) calc(h + 15) calc(s - 15) calc(l - 15));
+
+  margin: auto;
+  user-select: none;
+
+  &:hover, &:active {
+    box-shadow: 
+      inset 0 .1rem .1rem 0 hsl(from var(--cor) h s calc(l + 15)),
+      0 .1rem .1rem 0 hsl(from var(--cor) h s l),
+      0 .5rem .5rem -.25rem hsl(from var(--fundo) calc(h + 15) calc(s - 10) calc(l - 20));
+  }
+
+  &:hover {
+    scale: 0.975;
+  }
+
+  &:active {
+    scale: 0.95;
+  }
+}
+
+input:is([type=text], [type=number], [type=password])::-webkit-inner-spin-button,
+input:is([type=text], [type=number], [type=password])::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-top: 4rem;
+  margin-bottom: 5rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 3rem;
+  padding-bottom: 5rem;
+}
+
+#jogadores {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 5rem auto;
+  gap: 2rem;
+  grid-template-areas: 
+    'label label'
+    'input button';
+
+  label {
+    grid-area: label;
+  }
+  
+  input {
+    grid-area: input;
+    padding-inline: 1rem;
+  }
+
+  button {
+    grid-area: button;
+  }
+}
+
+#senhas {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#turnos {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+
+    li {
+      padding: 1rem;
+
+      label {
+        display: flex;
+        padding: 1.25rem 1.5rem;
+        border-radius: 1.75rem;
+        background-color: var(--cor);
+
+        box-shadow: 
+          inset 0 .1rem .1rem 0 hsl(from var(--cor) h s calc(l + 15)),
+          0 .1rem .1rem 0 hsl(from var(--cor) h s l),
+          0 .5rem .5rem -.25rem hsl(from var(--fundo) calc(h + 15) calc(s - 10) calc(l - 20));
+
+        &:has(input:checked), &:hover {
+          box-shadow:
+            inset 0 .1rem .1rem 0 hsl(from var(--cor) h s calc(l + 15)),
+            0 .1rem .1rem 0 hsl(from var(--cor) h s l),
+            0 1rem 1rem -.5rem hsl(from var(--fundo) calc(h + 15) calc(s - 15) calc(l - 15));
+  
+        }
+        
+        &:hover {
+          scale: 1.05;
+        }
+        
+        &:has(input:checked) {
+          scale: 1.2;
+        }
+        
+        input {
+          display: none;
+        }
+      }
+    }
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    output {
+      opacity: 0;
+      user-select: none;
+      pointer-events: none;
+      font-size: 1.25rem;
+    }
+
+    button:active ~ output {
+      opacity: 1;
+    }
+  }
+}
+
+#fim {
+  margin-top: 2rem;
+  --cor: hsl(350, 75%, 50%);
+  background-color: hsl(350, 75%, 75%);
+}
+
+button, label {
+  transition: scale 200ms ease-in-out, box-shadow 300ms ease-in-out;
+}
